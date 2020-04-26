@@ -1,0 +1,20 @@
+export const users=[
+    {
+        userid:'123',
+        name:'priyanko',
+        email:'priyanko@gmail.com',
+        password:'123456'
+    },
+    {
+        userid:'13',
+        name:'ullu',
+        email:'ullu@gmail.com',
+        password:'1234'
+    },
+    {
+        userid:'3',
+        name:'pop',
+        email:'pop@gmail.com',
+        password:'1234567'
+    }
+]

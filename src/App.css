@@ -1,0 +1,283 @@
+#root{
+  z-index: -1;
+  position: absolute;
+  width:100%;
+}
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop{
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  background-clip: content-box;
+  position: absolute;
+  z-index: 10;
+  opacity: 0.7;
+}
+.modal-holder{
+  position: absolute;
+  z-index: 100;
+  background: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.modalHeader{
+  padding: 10px;
+}
+.modalBody{
+  margin:20px;
+}
+.modalFooter{
+  padding: 10px;
+}
+.modalContainer .grid{
+  position: sticky;
+}
+.tooltipElement{
+  position:relative;
+}
+
+.tooltipContainer{
+  background-color: darkcyan;
+  color: white;
+  position: absolute;
+  width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  z-index: 1000;
+  font-size: 12px;
+}
+.positionTop{
+  left: 40%;
+  bottom: 150%;
+}
+.positionBottom{
+  left: 40%;
+  top: 150%;
+}
+.positionRight{
+  left: 110%;
+  top: 0;
+}
+.positionLeft{
+  right: 110%;
+  top: 0;
+}
+.tooltipArrow{
+  position: absolute;
+  background: darkcyan;
+  height: 0px;
+  width: 0px;
+  border:5px solid;
+}
+.rightArrow{
+  border-right-width:0px;
+  border-left-width: 10px;
+  border-left-color:transparent;
+  right: -10px;
+  bottom: 40%;
+}
+.upArrow{
+  border-top-width: 0px;
+  border-bottom-width: 10px;
+  border-bottom-color:transparent;
+  top: -10px;
+  left: 40%;
+}
+.downArrow{
+  border-top-width: 10px;
+  border-bottom-width: 0px;
+  border-top-color:transparent;
+  bottom: -10px;
+  left: 40%;
+}
+.leftArrow{
+  border-right-width:10px;
+  border-left-width: 0px;
+  border-right-color:transparent;
+  left: -10px;
+  bottom: 40%;
+}
+
+li {
+  list-style: none;
+  position:relative;
+}
+.mainTabClass{
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+
+.firstHierarchy{
+  padding-inline-start:0;
+  position: absolute;
+}
+
+
+
+.nestedHierarchy{
+  position: absolute;
+  left: 100%;
+  top: 0;
+  padding-inline-start: 0;
+}
+
+.tabHolder{
+  margin:30px;
+}
+.navlinkTab{
+  background: cornflowerblue;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* grid */
+table th{
+  padding:10px
+}
+
+.component{
+  display: flex;
+  justify-content: center;
+}
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  background: cornsilk;
+  padding: 30px;
+}
+.dashboard div{
+  margin: 5px;
+  text-align: left;
+}
+.dashboard div span{
+  margin-left: 5px;
+}
+.link{
+  cursor: pointer;
+}
+.grid{
+  margin-left: 50px;
+  margin-left: 50px;
+  margin-right: 20px;
+  overflow: auto;
+  height:500px;
+}
+
+.grid table{
+  width: 1000px;
+}
+.grid thead{
+  background-color: cornflowerblue;
+  color: white;
+}
+.grid tbody{
+  background-color: aliceblue;
+}
+.grid td{
+  padding:1px;
+  position:relative;
+}
+
+.grid tfoot{
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+.deleteBtn{
+  background-color: cornflowerblue;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+/* .grid tfoot tr{
+  width:100%;
+} */
+input[type="button"]{
+  background-color: white;
+  color: black;
+  margin: 9px;
+  width: 70px;
+  border-style: solid;
+  border-color: white;
+  display: flex;
+}
+input[type="button"]:hover{
+  cursor: pointer;
+}
+.loginComponent{
+  background-color: cornflowerblue;
+  width: 400px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+.login{
+  align-self: flex-end;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+  background: cornflowerblue;
+  padding: 10px;
+  color: white;
+}
+
+.logout{
+  align-self: flex-end;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: cornflowerblue;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.visitorModal:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.eventDetail{
+  background: cornflowerblue;
+  margin: 20px;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+.eventDetail button{
+  margin: 15px;
+  background: white;
+  border: none;
+}
+.createEvent{
+  background: cornflowerblue;
+  padding:10px;
+  margin:20px;
+}
+.createEvent form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createEvent input{
+  margin-bottom:10px;
+}
+.createEvent textarea{
+  margin-bottom: 10px;
+  height: 200px;
+  width: 500px;
+}
