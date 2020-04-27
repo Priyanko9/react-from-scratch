@@ -43,7 +43,7 @@ module.exports = () => ({
         ]
       },
       output: {
-        filename: "bundle.js"
+        filename: '[name].[contenthash].js'
       },
       plugins: [
       new HtmlWebpackPlugin({
