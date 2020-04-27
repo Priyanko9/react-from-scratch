@@ -18,6 +18,8 @@ deploy:
     on:
       branch: master
   - provider: lambda
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
     function_name: "lambda-test"
     region: "us-east-1"
     role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
