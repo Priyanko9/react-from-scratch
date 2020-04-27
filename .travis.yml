@@ -23,7 +23,7 @@ deploy:
     function_name: "React_SSR"
     region: "us-east-2"
     role: "arn:aws:iam::593103992301:role/service-role/React_SSR-role-ufockx2n"
-    runtime: "nodejs12.16.1"
+    runtime: "nodejs12.16"
     handler_name: "handler"  
     zip: "server/index.js"
 after_deploy:
