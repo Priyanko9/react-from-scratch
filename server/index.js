@@ -17,7 +17,7 @@ const part2=part1.toString().split("</form>");
 app.use('/',express.static("dist"));
 app.use((req,res)=>{
     
-    res.write(part1[0]);
+    res.write(part1[0]+"just confirming");
     const reactMarkUp=(
     <StaticRouter url={req.url}>
         <Provider store={store}>
