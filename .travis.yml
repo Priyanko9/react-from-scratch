@@ -22,7 +22,7 @@ deploy:
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     function_name: "lambda-test"
     region: "us-east-1"
-    role: "arn:aws:iam::593103992301:user/travisCI"
+    role: "arn:aws:iam::593103992301:role/service-role/RedirectClientRoute-role-w9zisow9"
     runtime: "nodejs12.16.1"
     handler_name: "handler"  
     zip: "server/index.js"
