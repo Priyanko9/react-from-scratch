@@ -14,7 +14,7 @@ const app=express();
 const file=fs.readFileSync('dist/index.html').toString();
 const part1=file.split("<form>");
 const part2=part1.toString().split("</form>");
-const part1divide=part1.split('<div id="root">');
+const part1divide=part1[0].split('<div id="root">');
 app.use('/',express.static("dist"));
 app.use((req,res)=>{
     

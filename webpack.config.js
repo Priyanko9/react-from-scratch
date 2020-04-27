@@ -58,7 +58,7 @@ module.exports = () => ({
       new webpack.ProgressPlugin(),
       new webpack.SourceMapDevToolPlugin({
         // this is the url of our local sourcemap server
-        publicPath: 'http://localhost:3000/',
+        publicPath: 'http://localhost:8000/',
         filename: '[file].map',
       })
     ]
