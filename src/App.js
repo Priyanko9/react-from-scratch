@@ -1,60 +1,66 @@
-import React from 'react';
-import {  Route, Switch, Redirect } from 'react-router-dom';
-import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import React, { Component } from 'react';
 
+import {API_URL,FRONTPAGE_TAG} from './Constants';
 
-import Events from './components/Events';
-import BookedEvents from './components/BookedEvents';
-import CreatedEvents from './components/CreatedEvents';
-import Dashboard from './components/Dashboard';
-import Login from './components/Login';
-import {logout} from './actions/user.actions';
-import {PrivateRoute} from './PrivateRoute';
-import Navbar from './utilities/Navbar';
-import EventDetail from './components/EventDetail';
-import CreateEvent from './components/CreateEvent';
+import {Home} from './Home.component';
+import {Pagination} from './Pagination.component';
 
-
-
-
-function App(props) {
-  let {loggedIn,logout}=props;
-  
-  
-  
-  return (
-    <div className="App">
-          Testing123,changed again,final testing ,doubt ???
-          <Navbar/>
-          <Switch>
-            <Route exact path="/events" component={Events}  />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/createdEvents" component={CreatedEvents} />
-            <PrivateRoute path="/bookedEvents" component={BookedEvents} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <PrivateRoute path="/eventDetail" component={EventDetail} />
-            <PrivateRoute path="/createEvent" component={CreateEvent} />
-            <Redirect exact from="/" to="/events"/>
-          </Switch>
-          {!loggedIn &&<div className="login">
-            <NavLink to="/login" className="navlinkTab">Login</NavLink>
-            </div>}
-          {loggedIn &&<div className="logout" onClick={()=>logout()}>Logout</div>}
-    </div>
-  );
-}
-
-const mapStateToProps=(state)=>{
-  return {
-    loggedIn:state.authentication.loggedIn
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+        rows:[]
+    };
+  }
+  checkTimeDifference(){
+    const date1 = new Date();
+    const date2 = new Date('2020-04-29T12:03:57.000Z');
+    const diffTime = Math.abs(date2 - date1);
+    
+    if(Math.ceil(diffTime / (1000 * 60) < 60)){
+      return Math.ceil(diffTime / (1000 * 60) < 60);
+    } else if(Math.ceil(diffTime / (1000 * 60 * 60) < 24 && Math.ceil(diffTime / (1000 * 60) >= 60))){
+      return Math.ceil(diffTime / (1000 * 60 * 60));
+    } else {
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+  }
+  componentDidMount(){
+    let url=API_URL+"?tags="+FRONTPAGE_TAG;
+    fetch(url).then(async (result)=>{
+        let totalData=await result.json();
+        let count=totalData.hits;
+        let totalRows=[];
+        count.forEach(ele=>{
+            let row={
+                "title":ele.title,
+                "url":ele.url,
+                "author":ele.author,
+                "points":ele.points,
+                "duration":this.checkTimeDifference(ele.created_at),
+                "hide":false
+            }
+            totalRows.push(row);
+        })
+        localStorage.setItem("newsData",JSON.stringify(totalRows));
+        this.setState({
+            rows:totalRows
+        });
+        console.log(totalData);
+    })
+  }
+  render(){
+    return (
+      <div className="App">
+        <header>
+          Hacker News
+        </header>
+        {this.state.rows.length > 0 && <Pagination totalData={this.state.rows} render={data=>
+            <Home rows={data}/>
+        }/>}
+      </div>
+    );
   }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-  return { 
-    logout:()=>dispatch(logout())
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default App;

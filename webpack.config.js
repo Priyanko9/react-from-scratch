@@ -43,7 +43,7 @@ module.exports = () => ({
         ]
       },
       output: {
-        filename: '[name].[contenthash].js'
+        filename: '[name].[hash].js'
       },
       plugins: [
       new HtmlWebpackPlugin({
@@ -58,7 +58,7 @@ module.exports = () => ({
       new webpack.ProgressPlugin(),
       new webpack.SourceMapDevToolPlugin({
         // this is the url of our local sourcemap server
-        publicPath: 'http://localhost:8000/',
+        publicPath: 'http://localhost:3000/',
         filename: '[file].map',
       })
     ]

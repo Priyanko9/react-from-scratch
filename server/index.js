@@ -2,11 +2,9 @@ import React from 'react';
 import express from 'express';
 import {StaticRouter} from 'react-router-dom';
 import fs from 'fs';
-import { Provider } from 'react-redux';
 import {renderToNodeStream} from 'react-dom/server';
 import 'localstorage-polyfill';
 import App from '../src/App';
-import { store } from '../src/utilities/store';
 
 const PORT=process.env.PORT || 3000;
 
@@ -22,9 +20,7 @@ app.use((req,res)=>{
     //res.write(part1[0]);
     const reactMarkUp=(
     <StaticRouter url={req.url}>
-        <Provider store={store}>
             <App />
-        </Provider>
     </StaticRouter>)
     let stream=renderToNodeStream(reactMarkUp);
     stream.pipe(

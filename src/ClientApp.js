@@ -5,10 +5,7 @@ import { BrowserRouter} from 'react-router-dom';
 
 import './App.css';
 import App from './App';
-import { store } from './utilities/store';
 
-hydrate(<BrowserRouter>
-    <Provider store={store}>
-        <App />
-    </Provider>
-</BrowserRouter>,document.getElementById('root'));
+
+hydrate(<App />
+,document.getElementById('root'));
