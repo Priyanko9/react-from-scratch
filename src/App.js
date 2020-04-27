@@ -25,6 +25,7 @@ function App(props) {
   
   return (
     <div className="App">
+          Testing123
           <Navbar/>
           <Switch>
             <Route exact path="/events" component={Events}  />
