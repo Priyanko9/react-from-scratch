@@ -7,7 +7,7 @@ import './App.css';
 import App from './App';
 import { store } from './utilities/store';
 
-render(<BrowserRouter>
+hydrate(<BrowserRouter>
     <Provider store={store}>
         <App />
     </Provider>
