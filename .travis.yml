@@ -8,6 +8,8 @@ cache:
 before_deploy:
   - yarn global add travis-ci-cloudfront-invalidation
   - yarn run build
+script:
+  - yarn test  
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID
