@@ -3,9 +3,7 @@ import express from 'express';
 import {StaticRouter} from 'react-router-dom';
 import fs from 'fs';
 import {renderToNodeStream} from 'react-dom/server';
-import 'localstorage-polyfill';
 import App from '../src/App';
-
 const PORT=process.env.PORT || 3000;
 
 const app=express();
@@ -15,7 +13,6 @@ const part2=part1.toString().split("</form>");
 const part1divide=part1[0].split('<div id="root">');
 app.use('/',express.static("dist"));
 app.use((req,res)=>{
-    
     res.write(part1divide[0]+"just confirming"+part1divide[1]);
     //res.write(part1[0]);
     const reactMarkUp=(

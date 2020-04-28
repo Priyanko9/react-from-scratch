@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import ErrorBoundary from './ErrorBoundary';
-import {context} from './App';
+
 
 export class Home extends Component{
 
@@ -30,37 +30,30 @@ export class Home extends Component{
         }
     })
    }
-   upvote=(record,index)=>{
+   upvote=(record)=>{
     let localRecord={...record}; 
-    let newRecords=this.mapData(localRecord,index,this.state.rows,0);
+    let newRecords=this.mapData(localRecord,this.state.rows);
     let data=JSON.parse(localStorage.getItem("newsData"));
-    let storageData=this.mapData(localRecord,index,data,data.length-this.state.rows.length);
+    let storageData=this.mapData(localRecord,data);
     this.updateStateAndSave(newRecords,storageData);
    }
-   hide=(record,index)=>{
+   hide=(record)=>{
     let localRecord={...record};   
-    let newRecords=this.filterData(localRecord,index,this.state.rows,0);
+    let newRecords=this.filterData(localRecord,this.state.rows);
     let data=JSON.parse(localStorage.getItem("newsData"));
-    let storageData=this.filterData(localRecord,index,data,data.length-this.state.rows.length);
+    let storageData=this.filterData(localRecord,data);
     this.updateStateAndSave(newRecords,storageData);
    }
-   mapData(record,index,rows,offset){
-    return rows.map((r,i)=>{
-            // if(i===(index+offset)){
-            //     r.points=record.points+1;
-            // }
+   mapData(record,rows){
+    return rows && rows.map((r,i)=>{
             if(r.objectID===record.objectID){
                     r.points=record.points+1;
                 }
             return r
         })
    }
-   filterData(record,index,rows,offset){
-    return rows.filter((r,i)=>{
-                // if(i===(index+offset)){
-                //     r.hide=!record.hide;
-                //     return false
-                // }
+   filterData(record,rows){
+    return rows && rows.filter((r,i)=>{
                 if(r.objectID===record.objectID){
                         r.hide=!record.hide;
                         return false
@@ -72,37 +65,37 @@ export class Home extends Component{
         let rows=this.state.rows;
         
         return(
-            <div className="home">
+            <div className="home" data-test="HomeComponent">
                 {
-                    rows.map((r,index) => <HomeTemplate 
-                    row={r} 
-                    index={index} 
-                    key={index}
-                    upvote={this.upvote}
-                    hide={this.hide}
-                    />)
+                     rows && rows.map((r,index) => <HomeTemplate 
+                        row={r} 
+                        index={index} 
+                        key={index}
+                        upvote={this.upvote}
+                        hide={this.hide}
+                        />)
                 }
             </div>
         )
     }
 }
 
-const HomeTemplate=(props)=>{
+export const HomeTemplate=(props)=>{
     let currentPage=localStorage.getItem("currentPage");
     let hitsPerPage=localStorage.getItem("hitsPerPage");
     return (
             
-        <div className="newsfeedrow" >
+        <div className="newsfeedrow" data-test="HomeTemplate">
             <div className="upperRow">
                 <span>{(hitsPerPage*currentPage) + props.index + 1}.</span>
-                <span className="upvotePointer" onClick={(e)=>props.upvote(props.row,props.index)}></span>
+                <span className="upvotePointer" data-test="upvote" onClick={(e)=>props.upvote(props.row)}></span>
                 <span className="title">{props.row.title}</span>
             </div>
             <div className="bottomRow">
                 <span>points:{props.row.points}</span>
                 <span>by: {props.row.author}</span>
                 <span>{props.row.duration}</span>
-                <span onClick={(e)=>props.hide(props.row,props.index)}>hide</span>
+                <span data-test="hide" onClick={(e)=>props.hide(props.row)}>hide</span>
             </div>
         </div>
     )
