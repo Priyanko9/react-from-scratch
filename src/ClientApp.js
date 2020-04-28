@@ -5,5 +5,5 @@ import './App.css';
 import App from './App';
 
 
-render(<App />
+hydrate(<App />
 ,document.getElementById('root'));
