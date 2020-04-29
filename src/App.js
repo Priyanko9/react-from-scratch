@@ -23,14 +23,17 @@ export class App extends Component {
     let fetchedObject, rows, currentPage, totalPages;
     let fromCache = JSON.parse(localStorage.getItem("fromCache"));
     let hitsPerPage = this.state.hitsPerPage;
+    let dataInLocalStorage = JSON.parse(localStorage.getItem("newsData"));
     //checking if the data is in localstorage cache or not
     if (fromCache) {
-      rows = JSON.parse(localStorage.getItem("newsData")).slice(
+      rows = dataInLocalStorage.slice(
         pageNumber * this.state.hitsPerPage,
         pageNumber * this.state.hitsPerPage + this.state.hitsPerPage
       );
       currentPage = pageNumber;
-      totalPages = this.state.totalPages;
+      totalPages = Math.ceil(
+        dataInLocalStorage.length / this.state.hitsPerPage
+      );
     } else {
       fetchedObject = await getFeedData(pageNumber);
       if (fetchedObject) {
