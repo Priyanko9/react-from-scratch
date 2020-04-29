@@ -1,7 +1,12 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+
+module.exports = () => ({
+  plugins: [new CompressionWebpackPlugin()]
+});
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path=require('path');
 
 module.exports = () => ({
@@ -50,11 +55,8 @@ module.exports = () => ({
         filename: 'index.html',
         template: './src/index.html'
       }),
+      new CompressionWebpackPlugin(),
       new MiniCssExtractPlugin({filename: './App.css'}),
-      new CopyWebpackPlugin([
-          { from: 'src/images',
-          to: 'images/'}
-      ]),
       new webpack.ProgressPlugin(),
       new webpack.SourceMapDevToolPlugin({
         // this is the url of our local sourcemap server

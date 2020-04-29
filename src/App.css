@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   color:grey;
-  width: 70%;
+  width: 90%;
   margin: 20px;
 }
 header{
@@ -17,7 +17,7 @@ header{
   color: black;
   font-weight: bold;
   align-self: normal;
-  width: 70%;
+  width: 100%;
 }
 .newsfeedrow{
   display: flex;
@@ -28,11 +28,12 @@ header{
 }
 .upperRow .title{
   color:black;
+  text-align: left;
 }
 .bottomRow{
   display: flex;
   position: relative;
-  left: 25px;
+  width: min-content;
 }
 .upvotePointer{
   border-bottom-width: 10px;
@@ -46,11 +47,22 @@ header{
   border-bottom-color: grey;
   border-left-color: transparent;
   border-right-color: transparent;
-  align-self: center;
+  height: 4px;
+  
+}
+.links{
+  cursor: pointer;
 }
 .pagination{
   align-self: baseline;
+  cursor: pointer;
 }
 span{
-  margin:2px;
+  margin:3px;
+}
+
+@media only screen and (min-width: 450px) {
+  .bottomRow{
+    width: max-content;
+  }
 }

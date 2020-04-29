@@ -16,7 +16,7 @@ export const Pagination =(props)=> {
     return (
         <>
             {render(totalData)}
-            <div className="pagination" data-test="pagination" onClick={(e)=>showSelectedData(e)}>
+            <div className="pagination links" data-test="pagination" onClick={(e)=>showSelectedData(e)}>
                 {totalPages!==(currentPage+1) ? <span>More</span> : ""}
                 {currentPage!==0 ? <span>First</span> : ""}
             </div>

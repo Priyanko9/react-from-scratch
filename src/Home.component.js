@@ -88,14 +88,14 @@ export const HomeTemplate=(props)=>{
         <div className="newsfeedrow" data-test="HomeTemplate">
             <div className="upperRow">
                 <span>{(hitsPerPage*currentPage) + props.index + 1}.</span>
-                <span className="upvotePointer" data-test="upvote" onClick={(e)=>props.upvote(props.row)}></span>
+                <span className="upvotePointer links" data-test="upvote" onClick={(e)=>props.upvote(props.row)}></span>
                 <span className="title">{props.row.title}</span>
             </div>
             <div className="bottomRow">
                 <span>points:{props.row.points}</span>
                 <span>by: {props.row.author}</span>
                 <span>{props.row.duration}</span>
-                <span data-test="hide" onClick={(e)=>props.hide(props.row)}>hide</span>
+                <span data-test="hide" className="links" onClick={(e)=>props.hide(props.row)}>hide</span>
             </div>
         </div>
     )
