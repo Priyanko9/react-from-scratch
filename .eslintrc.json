@@ -9,11 +9,10 @@
   ],
   "rules": {
     "react/prop-types": 0,
-    "react-hooks/rules-of-hooks": "error",
     "no-console": "warn"
   },
   "parser": "babel-eslint",
-  "plugins": ["react", "import", "jsx-a11y", "react-hooks"],
+  "plugins": ["react", "import", "jsx-a11y"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -24,7 +23,8 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "settings": {
     "react": {

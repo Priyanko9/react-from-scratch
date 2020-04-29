@@ -57,10 +57,25 @@ header{
   align-self: baseline;
   cursor: pointer;
 }
+.pagination:focus{
+  outline:none;
+}
 span{
   margin:3px;
 }
-
+span:focus{
+  outline:none;
+}
+a{
+  text-decoration: none;
+}
+a:visited{
+  color:grey !important;
+}
+a:focus{
+  outline:none;
+  text-decoration: underline;
+}
 @media only screen and (min-width: 450px) {
   .bottomRow{
     width: max-content;
