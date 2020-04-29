@@ -2,6 +2,8 @@ import React from "react";
 
 export const Pagination = props => {
   let { totalPages, currentPage, totalData, render, callback } = props;
+
+  //Move to the next page or First Page functionality
   const showSelectedData = e => {
     if (e.keyCode === 13 || e.type == "click") {
       let text = e ? e.target.textContent : "";

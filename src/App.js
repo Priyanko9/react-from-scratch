@@ -23,6 +23,7 @@ export class App extends Component {
     let fetchedObject, rows, currentPage, totalPages;
     let fromCache = JSON.parse(localStorage.getItem("fromCache"));
     let hitsPerPage = this.state.hitsPerPage;
+    //checking if the data is in localstorage cache or not
     if (fromCache) {
       rows = JSON.parse(localStorage.getItem("newsData")).slice(
         pageNumber * this.state.hitsPerPage,
@@ -39,6 +40,7 @@ export class App extends Component {
         hitsPerPage = fetchedObject.totalData.hitsPerPage;
       }
     }
+    //since not using redux,storing key values in localStorage for later use
     localStorage.setItem("currentPage", currentPage);
     localStorage.setItem("hitsPerPage", hitsPerPage);
     this.setState({ rows, currentPage, totalPages, hitsPerPage });

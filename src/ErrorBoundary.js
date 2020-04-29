@@ -1,4 +1,3 @@
-// mostly code from reactjs.org/docs/error-boundaries.html
 import React, { Component } from "react";
 
 class ErrorBoundary extends Component {

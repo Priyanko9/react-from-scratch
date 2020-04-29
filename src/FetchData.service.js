@@ -1,5 +1,6 @@
 import { API_URL, FRONTPAGE_TAG } from "./Constants";
 
+//creating the duration when the news was posted from time
 export const checkTimeDifference = created_at => {
   const date1 = new Date();
   const date2 = new Date(created_at);
@@ -19,6 +20,7 @@ export const checkTimeDifference = created_at => {
   }
 };
 
+//api call implementation
 export const getFeedData = async pageNumber => {
   let totalRows = [],
     data;
@@ -46,6 +48,7 @@ export const getFeedData = async pageNumber => {
       };
       totalRows.push(row);
     });
+    //attaching to the already stored newsFeed in localStorage for creating a cache(can be done with redux)
     if (data && data.length > 0) {
       data = data.concat(totalRows);
     } else {

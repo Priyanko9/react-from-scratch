@@ -19,6 +19,7 @@ export class Home extends Component {
       return state;
     }
   }
+  //update the localStorage as well as the currentPage data
   updateStateAndSave(newRecords, storageData) {
     localStorage.setItem("newsData", JSON.stringify(storageData));
     this.setState(() => {
@@ -29,11 +30,12 @@ export class Home extends Component {
     });
   }
   upvote = (event, record) => {
+    //checking for keyboard enter and mouse click event
     if (event.keyCode === 13 || event.type == "click") {
-      let localRecord = { ...record };
-      let newRecords = this.mapData(localRecord, this.state.rows);
+      let localRecord = { ...record }; //creating a new object from record object instead of copying
+      let newRecords = this.mapData(localRecord, this.state.rows); //changing the current page data after upvotting
       let data = JSON.parse(localStorage.getItem("newsData"));
-      let storageData = this.mapData(localRecord, data);
+      let storageData = this.mapData(localRecord, data); //changing the localStorage data after upvotting
       this.updateStateAndSave(newRecords, storageData);
     }
   };
@@ -46,6 +48,7 @@ export class Home extends Component {
       this.updateStateAndSave(newRecords, storageData);
     }
   };
+  //creating new newsFeedArray after upvotting
   mapData(record, rows) {
     return (
       rows &&
@@ -57,6 +60,7 @@ export class Home extends Component {
       })
     );
   }
+  //filtering out the hidden news after hide click
   filterData(record, rows) {
     return (
       rows &&
