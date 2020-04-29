@@ -8,8 +8,8 @@ const PORT=process.env.PORT || 3000;
 
 const app=express();
 const file=fs.readFileSync('dist/index.html').toString();
-const part1=file.split("<form>");
-const part2=part1.toString().split("</form>");
+const part1=file.split("Loading ...");
+
 app.use('/',express.static("dist"));
 app.use((req,res)=>{
     res.write(part1[0]);
@@ -22,7 +22,7 @@ app.use((req,res)=>{
         res,{end:false}
     )
     stream.on('end',()=>{
-        res.write(part2[1]);
+        res.write(part1[1]);
         res.end();
     })
 })
