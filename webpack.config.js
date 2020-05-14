@@ -4,11 +4,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
 module.exports = () => ({
-  plugins: [new CompressionWebpackPlugin()]
-});
-const path=require('path');
-
-module.exports = () => ({
       
       entry: ['./src/ClientApp.js','./src/App.css'],
       module: {
