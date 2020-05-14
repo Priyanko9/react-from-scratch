@@ -40,7 +40,6 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack",
-    "clear-build-cache": "rm -rf .cache/ dist/",
     "awsprod": "npm -s run build && aws s3 cp dist/ s3://samplep21 --recursive",
     "start": "npm -s run build && babel-node server/index.js",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
